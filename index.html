@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuhong Zhai — AI Engineer</title>
+  <meta name="description" content="Yuhong Zhai — AI Engineer building production agent infrastructure at Meta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fbf7f0;
+      --card: #ffffff;
+      --ink: #2b2622;
+      --muted: #7a716a;
+      --accent: #e08a4c;
+      --accent-soft: #f7e7d6;
+      --line: #ece4d8;
+      --shadow: 0 10px 40px rgba(70, 50, 30, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 247, 240, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    nav .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.1rem; }
+    nav .links a { color: var(--ink); margin-left: 22px; font-size: 0.92rem; font-weight: 500; }
+    nav .links a:hover { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) { nav .links a { margin-left: 14px; font-size: 0.82rem; } }
+
+    /* Hero */
+    header { padding: 70px 0 50px; }
+    .hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 720px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.5px; }
+    .hero .role { color: var(--accent); font-weight: 600; font-size: 1.15rem; margin-top: 10px; }
+    .hero p.lead { color: var(--muted); margin-top: 18px; font-size: 1.02rem; }
+    .hero .meta { margin-top: 16px; color: var(--muted); font-size: 0.92rem; }
+    .btns { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 720px) { .btns { justify-content: center; } }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 0.92rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(224, 138, 76, 0.35); }
+    .btn-primary:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+    .btn-ghost:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
+    .portrait {
+      width: 100%; max-width: 280px; aspect-ratio: 3/4; object-fit: cover;
+      border-radius: 20px; box-shadow: var(--shadow); justify-self: center;
+      border: 5px solid #fff;
+    }
+
+    /* Sections */
+    section { padding: 50px 0; }
+    .section-title { font-family: 'Fraunces', serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 6px; }
+    .section-sub { color: var(--muted); margin-bottom: 28px; font-size: 0.95rem; }
+
+    /* Experience */
+    .job { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; margin-bottom: 18px; box-shadow: var(--shadow); }
+    .job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+    .job-title { font-weight: 600; font-size: 1.1rem; }
+    .job-co { color: var(--accent); font-weight: 600; }
+    .job-date { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
+    .job-team { color: var(--muted); font-style: italic; font-size: 0.9rem; margin: 4px 0 12px; }
+    .job ul { list-style: none; }
+    .job li { position: relative; padding-left: 20px; margin-bottom: 8px; color: #463f39; font-size: 0.95rem; }
+    .job li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* Skills */
+    .skill-group { margin-bottom: 18px; }
+    .skill-group h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--accent-soft); color: #a85f28; padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+
+    /* Education */
+    .edu { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; margin-bottom: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; box-shadow: var(--shadow); }
+    .edu .deg { font-weight: 600; }
+    .edu .school { color: var(--muted); font-size: 0.92rem; }
+    .edu .date { color: var(--muted); font-size: 0.88rem; }
+
+    /* Corgi section */
+    .corgi { background: linear-gradient(135deg, #fceede, #f7e1ce); border-radius: 24px; padding: 40px; text-align: center; box-shadow: var(--shadow); }
+    .corgi img { width: 100%; max-width: 560px; border-radius: 18px; box-shadow: var(--shadow); border: 6px solid #fff; }
+    .corgi p { color: #9a6a3a; margin-top: 18px; font-size: 1rem; }
+
+    /* Footer */
+    footer { padding: 50px 0 60px; text-align: center; color: var(--muted); border-top: 1px solid var(--line); margin-top: 30px; }
+    footer .contact a { margin: 0 10px; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <span class="brand">Yuhong Zhai</span>
+      <div class="links">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#corgis">Corgis</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <h1>Yuhong Zhai</h1>
+        <div class="role">AI Engineer</div>
+        <p class="lead">I build production agent infrastructure at Meta — MCP plugins, tool-calling agents, multi-turn workflows, eval harnesses, and agent observability. 6 years of production engineering across Meta, Walmart, and Nike serving billions of users.</p>
+        <div class="meta">📍 Mountain View, CA</div>
+        <div class="btns">
+          <a class="btn btn-primary" href="resume_for_Yuhong.pdf" target="_blank">📄 View Résumé</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <img class="portrait" src="myself.jpg" alt="Yuhong Zhai" />
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-sub">Where I've built things.</p>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-title">AI Engineer / Data Engineer</span> · <span class="job-co">Meta Platforms Inc.</span></div>
+          <span class="job-date">Aug 2024 – Present</span>
+        </div>
+        <div class="job-team">Monetization Payments Org — WhatsApp &amp; Messenger Payments (LATAM &amp; India)</div>
+        <ul>
+          <li>Led design and shipped an internal Claude-based MCP plugin as first owner, exposing modular agent skills via tool-calling interfaces — adopted by 10 teams and 200+ engineers, replacing manual analytics workflows org-wide.</li>
+          <li>Built Metric Portfolio, an event-driven agent observability framework with custom eval harnesses using LLM prompts to analyze code diffs, dashboards, and loggers in real time — catches ~2 major SEVs/month pre-production.</li>
+          <li>Developed automated health-check agents with multi-step tool calling and structured outputs to classify failure root causes — reduced manual triage from weeks to hours across global payments teams.</li>
+          <li>Designed prompt-based anomaly detection with tiered alerting integrated with Claude Infra to monitor 50+ business metrics — cut time-to-detection 15% and false positives 50%.</li>
+          <li>Architected the first user-engagement funnel analytics across 36 entry points, $33B TPV, and 263M+ monetizable transactions — adopted as the canonical funnel tool org-wide.</li>
+        </ul>
+        <div class="job-team" style="margin-top:14px;">Reality Labs — Wearable Devices Team</div>
+        <ul>
+          <li>Built unified connectivity and power-domain data pipelines — reduced p95 telemetry latency from 15 min to 90 sec and cut compute spend ~40%.</li>
+          <li>Onboarded and mentored 2 new-hire engineers on pipeline architecture, data quality, and on-call ownership.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-title">Data Engineer</span> · <span class="job-co">Walmart Connect</span></div>
+          <span class="job-date">Oct 2021 – Aug 2024</span>
+        </div>
+        <div class="job-team">San Bruno, CA</div>
+        <ul>
+          <li>Built streaming ETL pipelines processing 2B+ events for Walmart Connect advertising analytics, powering real-time advertiser dashboards across the Walmart Marketplace ads platform.</li>
+          <li>Optimized SQL queries and indexing for analytics dashboards, reducing query latency from minutes to seconds.</li>
+          <li>Analyzed OLQ score impact on GMV across 14k Walmart Marketplace sellers over 18 months; identified the top 10% contributing 90% of GMV.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-title">Data Engineer</span> · <span class="job-co">Nike</span></div>
+          <span class="job-date">Aug 2020 – Oct 2021</span>
+        </div>
+        <div class="job-team">Beaverton, OR</div>
+        <ul>
+          <li>Built metric-driven dashboards and alerting for the Audience Workbench platform using Splunk and ServiceNow — visibility into 70 audiences/day and 500/week for external stakeholders.</li>
+          <li>Ingested and validated ~1B consumer behavior events/day into Nike's data ecosystem via Snowflake SQL, powering NikeApp, NIKE.COM, and SNKRS.</li>
+          <li>Developed Python and SQL automation in Databricks for validation, anomaly detection, and exploratory analysis — reduced recurring workflows from weeks to hours.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">The tools I reach for.</p>
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; LLM Systems</h4>
+        <div class="tags">
+          <span class="tag">MCP (Model Context Protocol)</span><span class="tag">Claude / OpenAI APIs</span><span class="tag">Prompt Engineering</span><span class="tag">Tool-Calling Agents</span><span class="tag">Agent Orchestration</span><span class="tag">Multi-Turn Reasoning</span><span class="tag">RAG</span><span class="tag">Eval Harnesses</span><span class="tag">Agent Observability</span><span class="tag">Structured Outputs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; Infrastructure</h4>
+        <div class="tags">
+          <span class="tag">Distributed SQL Pipelines</span><span class="tag">Snowflake</span><span class="tag">Databricks</span><span class="tag">Airflow</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Git</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <p class="section-sub">Where it started.</p>
+      <div class="edu">
+        <div>
+          <div class="deg">M.S. in Quantitative Economics &amp; Econometrics</div>
+          <div class="school">Texas A&amp;M University · College Station, TX</div>
+        </div>
+        <div class="date">May 2019</div>
+      </div>
+      <div class="edu">
+        <div>
+          <div class="deg">B.S. in Economics</div>
+          <div class="school">Southwestern University of Finance and Economics · Chengdu, China</div>
+        </div>
+        <div class="date">June 2017</div>
+      </div>
+    </section>
+
+    <section id="corgis">
+      <h2 class="section-title">My Corgis 🐾</h2>
+      <p class="section-sub">The most important section of this site.</p>
+      <div class="corgi">
+        <img src="corgi.jpg" alt="My two corgis with a bouquet of flowers" />
+        <p>Meet the duo — chief morale officers and full-time treat negotiators. 🌸</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2 class="section-title" style="margin-bottom:14px;">Let's connect</h2>
+    <div class="contact">
+      <a href="mailto:vickyzrag@gmail.com">vickyzrag@gmail.com</a>
+      <a href="tel:+16692736688">669-273-6688</a>
+      <a href="https://github.com/yhlhr663" target="_blank">GitHub</a>
+    </div>
+    <p style="margin-top:22px; font-size:0.85rem;">© 2026 Yuhong Zhai · Mountain View, CA</p>
+  </footer>
+</body>
+</html>
